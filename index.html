@@ -628,6 +628,26 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
 
+  <script type="text/javascript">
+    
+    var urlApi = 'http://36.91.39.115/morbis-IM2/api/index.php/api/mobile/pengguna';
+
+    $.ajax({
+
+      type: 'GET',
+      url: urlApi,
+      dataType: 'json',
+      headers: {
+        'Authorization': 'Basic bW9yYmlzYXBpOm1vcmJpczEyMzQ='
+      },
+      success: function(data){
+        console.log(data);
+      }
+
+    });
+
+  </script>
+
 </body>
 
 </html>
