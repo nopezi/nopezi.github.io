@@ -630,16 +630,17 @@
 
   <script type="text/javascript">
     
-    var urlApi = 'http://36.91.39.115/morbis-IM2/api/index.php/api/mobile/pengguna';
+    // var urlApi = 'http://36.91.39.115/morbis-IM2/api/index.php/api/mobile/pengguna';
+    var urlApi = 'https://reqres.in/api/users';
 
     $.ajax({
 
       type: 'GET',
       url: urlApi,
       dataType: 'json',
-      headers: {
-        'Authorization': 'Basic bW9yYmlzYXBpOm1vcmJpczEyMzQ='
-      },
+      // headers: {
+      //   'Authorization': 'Basic bW9yYmlzYXBpOm1vcmJpczEyMzQ='
+      // },
       success: function(data){
         console.log(data);
       }
