@@ -56,6 +56,7 @@
               <li class="active"><a href="#hero">Home</a></li>
               <li><a href="#outme">About Me</a></li>
               <li><a href="#riwayat">Riwayat</a></li>
+              <li><a href="#skill">Skill</a></li>
               <li><a href="#footer">My Contact</a></li>
             </ul>
           </nav><!-- .nav-menu -->
@@ -95,17 +96,32 @@
             </div>
 
             <div class="row no-gutters">
+
               <div class="col-xl-7 d-flex align-items-stretch order-2">
                 <div id="typed-strings">
-                  <p>{{ profil.deskripsi }}</p>
+
+                  <div v-if="loading != ''">
+                    <div class="text-center" v-html="loading"></div>
+                  </div>
+
+                  <div v-else>
+                    <p>{{ profil.deskripsi }}</p>
+                  </div>
+
                 </div>
+
                 <span id="keterangan"></span>
                 <span id="tentangku"></span>
               </div>
               
               <div class="image col-xl-5 d-flex align-items-stretch justify-content-center order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
                 <!-- <div id="gambar_profil"></div> -->
-                <img :src="profil.url_gambar" class="img-fluid" width="200" height="200" alt="">
+
+                <div v-if="loading != ''">
+                  <!-- <div class="text-center" v-html="loading"></div> -->
+                </div>
+
+                <img v-else :src="profil.url_gambar" class="img-fluid" width="200" height="200" alt="">
               </div>
             </div>
 
@@ -184,6 +200,28 @@
 
           </div>
         </section><!-- End Frequently Asked Questions Section -->
+
+        <!-- skill -->
+        <section id="skill" class="features">
+          <div v-if="loading != ''" class="container">
+            <div class="text-center" v-html="loading"></div>
+          </div> 
+          <div v-else class="container">
+            <div class="section-title">
+              <h2>Skill</h2>
+            </div>
+            <div v-for="(sk, i) in skill" class="row">
+              <div class="col-md-12">
+
+                <label>{{ sk.nama_skill }}</label>
+                <div class="progress">
+                  <div :class="'progress-bar progress-bar-striped progress-bar-animated ' + sk.warna " role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" :style="'width: ' + sk.persentasi + '%'"></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
 
       </main><!-- End #main -->
 

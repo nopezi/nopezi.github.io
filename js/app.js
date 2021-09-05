@@ -9,13 +9,22 @@ var app = new Vue({
 		profil: '',
 		gambar: '136461314_10217857138531591_2958038147901187242_n.jpg',
 		pendidikan: '',
-		pekerjaan: ''
+		pekerjaan: '',
+		skill: '',
+		loading: '',
+		loading2: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...',
+		url_api: 'https://shielded-beyond-23529.herokuapp.com/api/',
 	},
 
 	mounted(){
+
+		htmlLoading = '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...'
+		this.loading = htmlLoading
+
 		this.dataProfile()
 		this.riwayatPendidikan()
 		this.riwayatPekerjaan()
+		this.skillData()
 		// var cek = this.allData(url_profil, params_pekerjaan)
 		// console.log('cek ', cek)
 	},
@@ -32,7 +41,7 @@ var app = new Vue({
 				data: Response.data
 			})
 			.then(data => {
-				console.log('masok')
+				// console.log('masok')
 				return data.data
 			})
 
@@ -40,7 +49,7 @@ var app = new Vue({
 		},
 
 		async dataProfile () {
-			let url_profil = 'https://shielded-beyond-23529.herokuapp.com/api/profil'
+			let url_profil = this.url_api+'profil'
 			await axios({
 				method: 'get',
 				url: url_profil,
@@ -49,14 +58,15 @@ var app = new Vue({
 			})
 			.then(data => {
 				console.log('masok')
-				console.table(data.data.data)
+				// console.table(data.data.data)
 				this.profil = data.data.data
 				this.gambar = '136461314_10217857138531591_2958038147901187242_n.jpg'//'<img :src="'+data.data.data.url_gambar+'" class="img-fluid" width="200" height="200" alt="">'
+				this.loading = ''
 			})
 		},
 
 		async riwayatPendidikan () {
-			let url_profil = 'https://shielded-beyond-23529.herokuapp.com/api/posting'
+			let url_profil = this.url_api+'posting'
 			await axios({
 				method: 'get',
 				url: url_profil,
@@ -68,13 +78,13 @@ var app = new Vue({
 			})
 			.then(data => {
 				var hasil = data.data.data
-				console.table(hasil)
+				// console.table(hasil)
 				this.pendidikan = hasil
 			})
 		},
 
 		async riwayatPekerjaan(){
-			let url_profil = 'https://shielded-beyond-23529.herokuapp.com/api/posting'
+			let url_profil = this.url_api+'posting'
 			await axios({
 				method: 'get',
 				url: url_profil,
@@ -86,8 +96,23 @@ var app = new Vue({
 			})
 			.then(data => {
 				var hasil = data.data.data
-				console.table(hasil)
+				// console.table(hasil)
 				this.pekerjaan = hasil
+			})
+		},
+
+		async skillData(){
+			await axios({
+				url: this.url_api+'skill',
+				method: 'get',
+				auth: this.authApi,
+				responType: 'json'
+			})
+			.then(data => {
+				var hasil = data.data.data
+				console.table(hasil)
+				this.skill = hasil
+				this.loading2 = ''
 			})
 		}
 
