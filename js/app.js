@@ -50,9 +50,15 @@ var app = new Vue({
 
 		async dataProfile () {
 			let url_profil = this.url_api+'profil'
+			// let url_profil = 'https://golang-profil.herokuapp.com/profile'
 			await axios({
 				method: 'get',
 				url: url_profil,
+				withCredentials: false,
+				headers: {
+				    'Access-Control-Allow-Origin' : '*',
+				    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+			    },
 				auth: this.authApi,
 				responType: 'json'
 			})
