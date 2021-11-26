@@ -49,14 +49,38 @@ var app = new Vue({
 		},
 
 		async dataProfile () {
+
 			let url_profil = this.url_api+'profil'
+
+			$.ajax({
+				type: 'get',
+				url: url_profil, //'https://google.com',
+				dataType: 'json',
+				crossDomain: true,
+				headers: {
+					// 'Authorization': 'Bearer ' + userToken,
+					'Access-Control-Allow-Origin': url_profil,//'https://google.com',
+					'Access-Control-Allow-Headers': 'Special-Request-Header',
+					'Access-Control-Allow-Credentials': true,
+					'Access-Control-Allow-Methods': 'PUT, POST, OPTIONS',
+			    },
+				success: function(hasil) {
+					console.log('masok jos')
+				}
+			})
+
+			
 			// let url_profil = 'https://golang-profil.herokuapp.com/profile'
+			// let url_profil = 'http://localhost:12345/profile'
+			// let url_profil = 'https://google.com'
+			// console.log(url_profil)
+			console.log('masoksokoko')
 			await axios({
 				method: 'get',
 				url: url_profil,
 				withCredentials: false,
 				headers: {
-				    'Access-Control-Allow-Origin' : '*',
+				    // 'Access-Control-Allow-Origin' : '*',
 				    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
 			    },
 				auth: this.authApi,
