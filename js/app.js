@@ -13,7 +13,8 @@ var app = new Vue({
 		skill: '',
 		loading: '',
 		loading2: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...',
-		url_api: 'https://shielded-beyond-23529.herokuapp.com/api/',
+		// url_api: 'https://shielded-beyond-23529.herokuapp.com/api/',
+		url_api: 'https://profile.lemak.my.id/api/',
 	},
 
 	mounted(){
