@@ -14,9 +14,10 @@ var app = new Vue({
 		loading: '',
 		loading2: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...',
 		// url_api: 'https://shielded-beyond-23529.herokuapp.com/api/',
-		// url_api: 'https://profile.lemak.my.id/api/',
+		url_api: 'https://profile.lemak.my.id/api/',
 		// url_api: 'https://shielded-beyond-23529.fly.dev/api/',
-		url_api: 'http://nopezi-profile.infinityfreeapp.com/api/',
+		// url_api: 'http://nopezi-profile.infinityfreeapp.com/api/',
+		// url_api: 'https://localhost/shielded-beyond-23529/public/api/',
 	},
 
 	mounted(){
@@ -57,11 +58,11 @@ var app = new Vue({
 			await axios({
 				method: 'get',
 				url: url_profil,
-				withCredentials: false,
-				headers: {
-				    'Access-Control-Allow-Origin' : '*',
-				    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-			    },
+				// withCredentials: false,
+				// headers: {
+				//     'Access-Control-Allow-Origin' : '*',
+				//     'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+			    // },
 				auth: this.authApi,
 				responType: 'json'
 			})
