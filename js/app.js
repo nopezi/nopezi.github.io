@@ -15,7 +15,8 @@ var app = new Vue({
 		loading2: '<span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span> Loading...',
 		// url_api: 'https://shielded-beyond-23529.herokuapp.com/api/',
 		// url_api: 'https://profile.lemak.my.id/api/',
-		url_api: 'https://shielded-beyond-23529.fly.dev/api/',
+		// url_api: 'https://shielded-beyond-23529.fly.dev/api/',
+		url_api: 'http://nopezi-profile.infinityfreeapp.com/api/',
 	},
 
 	mounted(){
